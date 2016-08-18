@@ -1,0 +1,54 @@
+body {
+    background-color: #F5F5DC;
+    display: flex;
+    flex-direction:column;
+}
+
+form {
+  background-color: #9999ff;
+  display: flex;
+}
+
+img {
+  border-radius: 15px 50px 30px;
+   padding: 20px;
+   flex: 1;
+}
+
+div {
+  display:flex;
+}
+
+h1 {
+  margin-left: 20px;
+  margin-bottom: 2px;
+}
+
+h3 {
+  margin-left: 20px;
+  margin-bottom: 2px;
+}
+
+
+section {
+  flex: 6;
+}
+
+.dishes {
+  flex: 2;
+  background-color: #FFFFFF;
+}
+
+.recipies {
+  margin-left: 20px;
+}
+
+input {
+  width: 80%;
+  margin-left: 20px;
+  margin-top: 2px;
+}
+
+.invalid {
+  background-color: yellow;
+}
