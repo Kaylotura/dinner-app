@@ -2,14 +2,11 @@ body {
     background-color: #F5F5DC;
     display: flex;
     flex-direction:column;
-    justify-content: space-around;
 }
 
 form {
   background-color: #9999ff;
-  margin-bottom: 5px;
   display: flex;
-  flex-direction: row;
 }
 
 img {
@@ -20,7 +17,6 @@ img {
 
 div {
   display:flex;
-  flex-direction: row;
 }
 
 h1 {
@@ -48,7 +44,7 @@ section {
 }
 
 input {
-  width: 500px;
+  width: 80%;
   margin-left: 20px;
   margin-top: 2px;
 }
