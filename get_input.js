@@ -60,7 +60,7 @@ function getIngredients(itemString) {
   if (/,/.test(itemString)) {
     return itemString.split(',');
   } else {
-    return [itemString]
+    return [itemString];
   }
 }
 
@@ -70,7 +70,7 @@ function getIngredients(itemString) {
  * Matches only for strings that are correctly typed up to the last character.
  */
 function runIngredientEnterer() {
-  var entryItem = $('#main-dish')
+  var entryItem = $('#main-dish');
   var entryRegExp = /^[a-z\s]+(\s*,\s*[a-z\s]+)*$/i;
   var valid = runValidator(entryItem, entryRegExp);
   if (valid) {
