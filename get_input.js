@@ -10,7 +10,7 @@ function runUpdateList(entryList) {
   // var sel = $('<select>').appendTo('.dishes > ul');
   var sel = $('.dishes > ul');
   _.forEach(entryList, function(item) {
-    sel.append($("<li>").attr('value', item).text(item));
+    sel.append($('<li>').attr('value', item).text(item));
   });
 }
 
@@ -55,7 +55,11 @@ function runValidator(entryItem, regExp) {
   }
 }
 
-
+/**
+ * Get the ingredient list and return an array.
+ * @param  {string} itemString The ingredient list, as a string
+ * @return {array}            List, as an array.
+ */
 function getIngredients(itemString) {
   if (/,/.test(itemString)) {
     return itemString.split(',');
