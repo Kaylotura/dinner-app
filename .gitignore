@@ -15,7 +15,7 @@ db.sqlite3
 .DS_Store
 
 # keys
-.key
+.key.js
 
 # junk files
 .txt
