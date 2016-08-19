@@ -6,9 +6,11 @@
  *   in the form of [{val: 1, text: 'Apple Pie'}, {val: 2, text: 'Muffin'}]
  */
 function runUpdateList(entryList) {
-  var sel = $('<select>').appendTo('#dishes > ul');
-  $(entryList).each(function() {
-    sel.append($("<option>").attr('value',this.val).text(this.text));
+  $('.dishes > ul').empty();
+  // var sel = $('<select>').appendTo('.dishes > ul');
+  var sel = $('.dishes > ul');
+  _.forEach(entryList, function(item) {
+    sel.append($("<li>").attr('value', item).text(item));
   });
 }
 
@@ -20,7 +22,7 @@ function displayInvalid(entryItem) {
 }
 
 /**
-* displayValid() un-highlights the input box.
+ * displayValid() un-highlights the input box.
  */
 function displayValid(entryItem) {
   entryItem.removeClass();
@@ -55,7 +57,11 @@ function runValidator(entryItem, regExp) {
 
 
 function getIngredients(itemString) {
-  return itemString.split(',');
+  if (/,/.test(itemString)) {
+    return itemString.split(',');
+  } else {
+    return [itemString]
+  }
 }
 
 /**
@@ -64,11 +70,11 @@ function getIngredients(itemString) {
  * Matches only for strings that are correctly typed up to the last character.
  */
 function runIngredientEnterer() {
-  var entryItem = $('#main-dish');
+  var entryItem = $('#main-dish')
   var entryRegExp = /^[a-z\s]+(\s*,\s*[a-z\s]+)*$/i;
   var valid = runValidator(entryItem, entryRegExp);
-  if (/[,]$/.test(entryItem) & valid) {
-    var ingredients = getIngredients(entryItem);
+  if (valid) {
+    var ingredients = getIngredients(entryItem.val());
     runUpdateList(ingredients);
   }
 }
