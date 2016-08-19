@@ -43,7 +43,7 @@ function stringValidator(testString, regExp) {
  *         Return true if there is a match, false otherwise.
  */
 function runValidator(entryItem, regExp) {
-  var entryString = getFieldEntry(entryItem);
+  var entryString = entryItem.val();
   if(stringValidator(entryString, regExp)) {
     displayValid(entryItem);
     return true;
