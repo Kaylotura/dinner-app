@@ -4,7 +4,7 @@
  * Takes in a single hit and returns the title of the recipe as a string.
  */
 function formatDish(dishObject) {
-  return dishObject['recipe']['label'];
+  return dishObject.recipe.label;
 }
 
 
@@ -12,8 +12,8 @@ function formatDish(dishObject) {
  * Takes in the hits returned by the Edamam and returns a list of strings.
  */
 function formatDishes(dishes) {
-  console.dir(dishes);
-  return _.map(dishes['hits']['hit'], formatDish);
+  console.dir(_.map(dishes, formatDish));
+  return _.map(dishes, formatDish);
 }
 
 /**
@@ -23,8 +23,16 @@ function formatDishes(dishes) {
 
 $.ajax({
   url: 'https://api.edamam.com/search',
-  data: {q: 'chicken' , app_id: edemamID , app_key: edemamKey},
-  success: formatDishes(),
+  type: "GET",
+  dataType: 'jsonp',
+  data: {
+    q: 'chicken',
+    app_id: edemamID,
+    app_key: edemamKey
+  },
+  success: function(response) {
+    formatDishes(response.hits)
+  },
   error: function(error) {
     alert(error);
   }
