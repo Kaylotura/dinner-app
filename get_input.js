@@ -77,11 +77,11 @@ function runIngredientEnterer() {
   var entryItem = $('#main-dish');
   var entryRegExp = /^[a-z\s]+(\s*,\s*[a-z\s]+)*$/i;
   var valid = runValidator(entryItem, entryRegExp);
-  if (valid) {
-    var ingredients = getIngredients(entryItem.val());
-    console.dir(ingredients);
-    runUpdateList(ingredients);
-  }
+  // if (valid) {
+    // var ingredients = getIngredients(entryItem.val());
+    // console.dir(ingredients);
+    // runUpdateList(ingredients);
+  // }
 }
 
 /**

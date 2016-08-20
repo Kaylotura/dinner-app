@@ -1,5 +1,7 @@
 'use strict';
 
+var ingredient = 'chicken';
+
 /**
  * Takes in a single hit and returns the title of the recipe as a string.
  */
@@ -21,19 +23,36 @@ function formatDishes(dishes) {
  * successful, it runs the json object through the formatDishes function.
  */
 
-$.ajax({
-  url: 'https://api.edamam.com/search',
-  type: "GET",
-  dataType: 'jsonp',
-  data: {
-    q: 'chicken',
-    app_id: edemamID,
-    app_key: edemamKey
-  },
-  success: function(response) {
-    formatDishes(response.hits)
-  },
-  error: function(error) {
-    alert(error);
-  }
-});
+function showDishesList(ingredient) {
+  $.ajax({
+    url: 'https://api.edamam.com/search',
+    type: 'GET',
+    dataType: 'jsonp',
+    data: {
+      q: ingredient,
+      appId: edemamID,
+      appKey: edemamKey
+    },
+    success: function(response) {
+      formatDishes(response.hits);
+    },
+    error: function(error) {
+      alert(error);
+    }
+  });
+}
+
+
+/**
+ * Event Handler registrator.
+ */
+function registerEventHandlers() {
+  $('#main-dish').on('input', runIngredientEnterer);
+  $('#accept-input').on('submit', function(event) {
+    event.preventDefault();
+    var ingredients = getIngredients();
+    showDishesList(ingredients[0]);
+  });
+}
+
+$(document).ready(registerEventHandlers);
