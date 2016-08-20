@@ -48,9 +48,9 @@ function showDishesList(ingredient) {
  */
 function registerEventHandlers() {
   $('#main-dish').on('input', runIngredientEnterer);
-  $('#accept-input').on('submit', function(event) {
+  $('#accept-input').on('click', function(event) {
     event.preventDefault();
-    var ingredients = getIngredients();
+    var ingredients = getIngredients($('#main-dish').val());
     showDishesList(ingredients[0]);
   });
 }
