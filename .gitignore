@@ -18,4 +18,4 @@ db.sqlite3
 .key.js
 
 # junk files
-.txt
+*.txt
