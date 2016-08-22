@@ -43,6 +43,14 @@ function showDishesList(ingredient) {
 }
 
 
+function populateRecipieCard(hit) {
+  var dishName = hit.recipe.label;
+  var ingredientList = hit.recipe.ingredientLines;
+  var instructionsLink = hit.recipe.url;
+  var tastyIcon = hit.recipe.img;
+}
+
+
 /**
  * Event Handler registrator.
  */
