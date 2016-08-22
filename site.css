@@ -19,11 +19,8 @@ div {
   display:flex;
 }
 
-h1 {
-  margin-left: 20px;
-  margin-bottom: 2px;
-}
-
+h1,
+h2,
 h3 {
   margin-left: 20px;
   margin-bottom: 2px;
