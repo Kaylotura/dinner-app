@@ -29,6 +29,24 @@ function showDishesList(ingredients) {
 }
 
 
+function populateRecipieCard(hit) {
+  $('recipie-card > h2').empty();
+  $('recipie-card > ingredients > ul').empty();
+  $('recipie-card > food-image').empty();
+  $('recipie-card > nav').empty();
+  var dishName = hit.recipe.label;
+  var ingredientList = hit.recipe.ingredientLines;
+  var instructionsLink = hit.recipe.url;
+  var tastyIcon = hit.recipe.img;
+  $('recipie-card > h2').append(dishName);
+  _.map(ingredientList, function(ingredientItem) {
+    return $('recipie-card > ingredients > ul').append(
+      '<li>' + ingredientItem + '</li>');
+  });
+  $('recipie-card > food-image').append(tastyIcon);
+  $('recipie-card > nav').append(instructionsLink);
+}
+
 /**
  * Event Handler registrator.
  */

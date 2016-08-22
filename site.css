@@ -1,11 +1,12 @@
 body {
-    background-color: #F5F5DC;
+    background-color: #CDC5BF;
     display: flex;
     flex-direction:column;
+    column-count: 2
 }
 
 form {
-  background-color: #9999ff;
+  background-color: #87CEFF;
   display: flex;
 }
 
@@ -19,16 +20,19 @@ div {
   display:flex;
 }
 
-h1 {
-  margin-left: 20px;
-  margin-bottom: 2px;
-}
-
+h1,
 h3 {
   margin-left: 20px;
   margin-bottom: 2px;
 }
 
+h2 {
+margin-top: 0;
+margin-bottom: 2px;
+padding-left: 5px;
+background-color: #1C86EE;
+color: white;
+}
 
 section {
   flex: 6;
@@ -36,6 +40,22 @@ section {
 
 form section div {
   display: flex;
+}
+
+input {
+  width: 80%;
+  margin-left: 20px;
+  margin-top: 2px;
+}
+
+nav {
+  margin-left: 20px;
+  margin-top: 5px;
+}
+
+p {
+  margin-left: 20px;
+  margin-right: 20px;
 }
 
 #main-dish {
@@ -53,14 +73,9 @@ form section div {
   background-color: #FFFFFF;
 }
 
-.recipies {
-  margin-left: 20px;
-}
-
-input {
-  width: 80%;
-  margin-left: 20px;
-  margin-top: 2px;
+.recipie-card {
+  margin: 20px;
+  background-color: #FFF8DC;
 }
 
 .invalid {
