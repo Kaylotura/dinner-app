@@ -2,6 +2,7 @@ body {
     background-color: #CDC5BF;
     display: flex;
     flex-direction:column;
+    column-count: 2
 }
 
 form {
