@@ -2,7 +2,6 @@ body {
     background-color: #CDC5BF;
     display: flex;
     flex-direction:column;
-    column-count: 2
 }
 
 form {
@@ -13,7 +12,7 @@ form {
 img {
   border-radius: 15px 50px 30px;
    padding: 20px;
-   flex: 1;
+   max-width: 100%;
 }
 
 div {
@@ -37,8 +36,8 @@ color: white;
 section {
   flex: 6;
 }
-
 form section div {
+
   display: flex;
 }
 
@@ -81,3 +80,10 @@ p {
 .invalid {
   background-color: yellow;
 }
+
+.icon {
+  height: 100px;
+  width: 100px;
+}
+
+#dish-list > li:hover {}
