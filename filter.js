@@ -7,9 +7,8 @@
  * @param  {json} dishes JSON file containing the dishes and ingredients.
  */
 function createDishArray(dishes) {
-  console.dir(dishes);
-  var dishArray = _.map(dishes.hits, function(dish) {
-    return [dish.recipe.label, dish.recipe.ingredientLines];
+  var dishArray = _.map(dishes.hits, function(dish, index) {
+    return [dish.recipe.label, dish.recipe.ingredientLines, index];
   });
   return dishArray;
 }
