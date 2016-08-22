@@ -83,16 +83,16 @@ function runIngredientEnterer() {
     // runUpdateList(ingredients);
   // }
 }
-
-/**
- * Event Handler registrator.
- */
-function registerEventHandlers() {
-  $('#main-dish').on('input', runIngredientEnterer);
-  // $('form').on('submit', function(event) {
-  //   event.preventDefault();
-  //   runFinalFormValidator();
-  // });
-}
-
-$(document).ready(registerEventHandlers);
+// 
+// /**
+//  * Event Handler registrator.
+//  */
+// function registerEventHandlers() {
+//   $('#main-dish').on('input', runIngredientEnterer);
+//   // $('form').on('submit', function(event) {
+//   //   event.preventDefault();
+//   //   runFinalFormValidator();
+//   // });
+// }
+//
+// $(document).ready(registerEventHandlers);

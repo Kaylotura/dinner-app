@@ -18,7 +18,6 @@ function createDishArray(dishes) {
  */
 function doesAnyIngredientMatch(dish, ingredient) {
   var matchRegExp = new RegExp(ingredient);
-  // var matchRegExp = '/' + ingredient + '/';
   return _.some(_.map(dish[1], function(ing) {
     return matchRegExp.test(ing);
   }));
