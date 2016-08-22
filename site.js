@@ -16,9 +16,9 @@ function populateList(dishData, ingredients) {
  * Registers the click on Dish List to populate Recipie Card function.
  */
 function registerDishListHandler() {
-  $('.dishes > ul > li').on('click', function() {
+  $('.dishes > ul > li').click( function() {
     alert('llamas');
-    var hit = recipieJSON[this.value];
+    var hit = recipieJSON[$(this).attr('value')];
     populateRecipieCard(hit);
   });
 }
@@ -51,21 +51,21 @@ function showDishesList() {
 
 
 function populateRecipieCard(hit) {
-  $('recipie-card > h2').empty();
-  $('recipie-card > ingredients > ul').empty();
+  $('.recipie-card > h2').empty();
+  $('.recipie-card > ingredients > ul').empty();
   $('.food-image').empty();
-  $('recipie-card > nav').empty();
+  $('.recipie-card > nav').empty();
   var dishName = hit.recipe.label;
   var ingredientList = hit.recipe.ingredientLines;
   var instructionsLink = hit.recipe.url;
   var tastyIcon = hit.recipe.img;
-  $('recipie-card > h2').append(dishName);
+  $('.recipie-card > h2').append(dishName);
   _.map(ingredientList, function(ingredientItem) {
     return $('recipie-card > ingredients > ul').append(
       '<li>' + ingredientItem + '</li>');
   });
-  $('recipie-card > food-image').append('<img src=' + tastyIcon + '>');
-  $('recipie-card > nav').append(instructionsLink);
+  $('.recipie-card > food-image').append('<img src=' + tastyIcon + '>');
+  $('.recipie-card > nav').append(instructionsLink);
 }
 
 /**
