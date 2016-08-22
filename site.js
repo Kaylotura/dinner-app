@@ -6,7 +6,7 @@ var ingredient = 'chicken';
  * Takes in a single hit and returns the title of the recipe as a string.
  */
 function formatDish(dishObject) {
-  return dishObject.recipe.label;
+  return dishObject[0];
 }
 
 
@@ -23,18 +23,21 @@ function formatDishes(dishes) {
  * successful, it runs the json object through the formatDishes function.
  */
 
-function showDishesList(ingredient) {
+function showDishesList(ingredients) {
   $.ajax({
     url: 'https://api.edamam.com/search',
     type: 'GET',
     dataType: 'jsonp',
     data: {
-      q: ingredient,
+      q: ingredients[0],
       appId: edemamID,
       appKey: edemamKey
     },
     success: function(response) {
-      formatDishes(response.hits);
+      var dishArray = createDishArray(response);
+      var filteredDishes = filterDishes(dishArray, ingredients);
+      var filteredDishList = formatDishes(filteredDishes);
+      runUpdateList(filteredDishList);
     },
     error: function(error) {
       alert(error);
@@ -51,7 +54,7 @@ function registerEventHandlers() {
   $('#accept-input').on('click', function(event) {
     event.preventDefault();
     var ingredients = getIngredients($('#main-dish').val());
-    showDishesList(ingredients[0]);
+    showDishesList(ingredients);
   });
 }
 
