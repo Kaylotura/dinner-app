@@ -6,7 +6,7 @@ var ingredient = 'chicken';
  * Runs a search request with Edemam using the given string 'chicken', and if
  * successful, it runs the json object through the formatDishes function.
  */
-
+var recipieJSON;
 function showDishesList(ingredients) {
   $.ajax({
     url: 'https://api.edamam.com/search',
@@ -21,6 +21,8 @@ function showDishesList(ingredients) {
       var dishArray = createDishArray(response);
       var filteredDishes = filterDishes(dishArray, ingredients);
       runUpdateList(filteredDishes);
+      recipieJSON = response.hits;
+
     },
     error: function(error) {
       alert(error);
@@ -32,7 +34,7 @@ function showDishesList(ingredients) {
 function populateRecipieCard(hit) {
   $('recipie-card > h2').empty();
   $('recipie-card > ingredients > ul').empty();
-  $('recipie-card > food-image').empty();
+  $('.food-image').empty();
   $('recipie-card > nav').empty();
   var dishName = hit.recipe.label;
   var ingredientList = hit.recipe.ingredientLines;
@@ -43,7 +45,7 @@ function populateRecipieCard(hit) {
     return $('recipie-card > ingredients > ul').append(
       '<li>' + ingredientItem + '</li>');
   });
-  $('recipie-card > food-image').append(tastyIcon);
+  $('recipie-card > food-image').append('<img src=' + tastyIcon + '>');
   $('recipie-card > nav').append(instructionsLink);
 }
 
@@ -56,6 +58,11 @@ function registerEventHandlers() {
     event.preventDefault();
     var ingredients = getIngredients($('#main-dish').val());
     showDishesList(ingredients);
+  });
+  $('.dishes > ul > li').on('click', function(event) {
+    event.preventDefault();
+    var hit = recipieJSON[$('.dishes > ul > li').attr('value')];
+    populateRecipieCard(hit);
   });
 }
 
