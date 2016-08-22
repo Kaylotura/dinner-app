@@ -3,11 +3,33 @@
 var ingredient = 'chicken';
 
 /**
+ * Populates the Dish list.
+ */
+function populateList(dishData, ingredients) {
+  var dishArray = createDishArray(dishData);
+  var filteredDishes = filterDishes(dishArray, ingredients);
+  runUpdateList(filteredDishes);
+  recipieJSON = dishData.hits;
+}
+
+/**
+ * Registers the click on Dish List to populate Recipie Card function.
+ */
+function registerDishListHandler() {
+  $('.dishes > ul > li').on('click', function() {
+    alert('llamas');
+    var hit = recipieJSON[this.value];
+    populateRecipieCard(hit);
+  });
+}
+
+/**
  * Runs a search request with Edemam using the given string 'chicken', and if
  * successful, it runs the json object through the formatDishes function.
  */
-
-function showDishesList(ingredients) {
+var recipieJSON;
+function showDishesList() {
+  var ingredients = getIngredients($('#main-dish').val());
   $.ajax({
     url: 'https://api.edamam.com/search',
     type: 'GET',
@@ -18,9 +40,8 @@ function showDishesList(ingredients) {
       appKey: edemamKey
     },
     success: function(response) {
-      var dishArray = createDishArray(response);
-      var filteredDishes = filterDishes(dishArray, ingredients);
-      runUpdateList(filteredDishes);
+      populateList(response, ingredients);
+      registerDishListHandler();
     },
     error: function(error) {
       alert(error);
@@ -32,7 +53,7 @@ function showDishesList(ingredients) {
 function populateRecipieCard(hit) {
   $('recipie-card > h2').empty();
   $('recipie-card > ingredients > ul').empty();
-  $('recipie-card > food-image').empty();
+  $('.food-image').empty();
   $('recipie-card > nav').empty();
   var dishName = hit.recipe.label;
   var ingredientList = hit.recipe.ingredientLines;
@@ -43,7 +64,7 @@ function populateRecipieCard(hit) {
     return $('recipie-card > ingredients > ul').append(
       '<li>' + ingredientItem + '</li>');
   });
-  $('recipie-card > food-image').append(tastyIcon);
+  $('recipie-card > food-image').append('<img src=' + tastyIcon + '>');
   $('recipie-card > nav').append(instructionsLink);
 }
 
@@ -54,8 +75,7 @@ function registerEventHandlers() {
   $('#main-dish').on('input', runIngredientEnterer);
   $('#accept-input').on('click', function(event) {
     event.preventDefault();
-    var ingredients = getIngredients($('#main-dish').val());
-    showDishesList(ingredients);
+    showDishesList();
   });
 }
 
