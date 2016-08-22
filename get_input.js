@@ -10,7 +10,7 @@ function runUpdateList(entryList) {
   // var sel = $('<select>').appendTo('.dishes > ul');
   var sel = $('.dishes > ul');
   _.forEach(entryList, function(item) {
-    sel.append($('<li>').attr('value', item).text(item));
+    sel.append($('<li>').attr('value', item[2]).text(item[0]));
   });
 }
 

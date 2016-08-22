@@ -7,8 +7,8 @@
  * @param  {json} dishes JSON file containing the dishes and ingredients.
  */
 function createDishArray(dishes) {
-  var dishArray = _.map(dishes, function(dish) {
-    return [dish.Object.recipe.label, dish.recipe.ingredientLines];
+  var dishArray = _.map(dishes.hits, function(dish, index) {
+    return [dish.recipe.label, dish.recipe.ingredientLines, index];
   });
   return dishArray;
 }
@@ -18,6 +18,7 @@ function createDishArray(dishes) {
  */
 function doesAnyIngredientMatch(dish, ingredient) {
   var matchRegExp = new RegExp(ingredient);
+  // var matchRegExp = '/' + ingredient + '/';
   return _.some(_.map(dish[1], function(ing) {
     return matchRegExp.test(ing);
   }));
