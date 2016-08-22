@@ -1,6 +1,6 @@
 'use strict';
 
-var ingredient = 'chicken';
+var recipieJSON;
 
 /**
  * Populates the Dish list.
@@ -13,11 +13,32 @@ function populateList(dishData, ingredients) {
 }
 
 /**
+ * Gather and display the recipe ingredients, image and link.
+ * @param  {[type]} hit [description]
+ */
+function populateRecipieCard(hit) {
+  $('recipie-card > h2').empty();
+  $('recipie-card > ingredients > ul').empty();
+  $('.food-image').empty();
+  $('recipie-card > nav').empty();
+  var dishName = hit.recipe.label;
+  var ingredientList = hit.recipe.ingredientLines;
+  var instructionsLink = hit.recipe.url;
+  var tastyIcon = hit.recipe.img;
+  $('recipie-card > h2').append(dishName);
+  _.map(ingredientList, function(ingredientItem) {
+    return $('recipie-card > ingredients > ul').append(
+      '<li>' + ingredientItem + '</li>');
+  });
+  $('recipie-card > food-image').append('<img src=' + tastyIcon + '>');
+  $('recipie-card > nav').append(instructionsLink);
+}
+
+/**
  * Registers the click on Dish List to populate Recipie Card function.
  */
 function registerDishListHandler() {
   $('.dishes > ul > li').on('click', function() {
-    alert('llamas');
     var hit = recipieJSON[this.value];
     populateRecipieCard(hit);
   });
@@ -27,7 +48,6 @@ function registerDishListHandler() {
  * Runs a search request with Edemam using the given string 'chicken', and if
  * successful, it runs the json object through the formatDishes function.
  */
-var recipieJSON;
 function showDishesList() {
   var ingredients = getIngredients($('#main-dish').val());
   $.ajax({
@@ -49,24 +69,6 @@ function showDishesList() {
   });
 }
 
-
-function populateRecipieCard(hit) {
-  $('recipie-card > h2').empty();
-  $('recipie-card > ingredients > ul').empty();
-  $('.food-image').empty();
-  $('recipie-card > nav').empty();
-  var dishName = hit.recipe.label;
-  var ingredientList = hit.recipe.ingredientLines;
-  var instructionsLink = hit.recipe.url;
-  var tastyIcon = hit.recipe.img;
-  $('recipie-card > h2').append(dishName);
-  _.map(ingredientList, function(ingredientItem) {
-    return $('recipie-card > ingredients > ul').append(
-      '<li>' + ingredientItem + '</li>');
-  });
-  $('recipie-card > food-image').append('<img src=' + tastyIcon + '>');
-  $('recipie-card > nav').append(instructionsLink);
-}
 
 /**
  * Event Handler registrator.

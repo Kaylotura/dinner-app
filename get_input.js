@@ -1,13 +1,13 @@
 'use strict';
 
 /**
- * updates the unordered list of menu ites
- * @param  {[array of objects]} entryList Items to put on list
- *   in the form of [{val: 1, text: 'Apple Pie'}, {val: 2, text: 'Muffin'}]
+ * Updates the unordered list of menu items.
+ *
+ * @param  {array} entryList   Items to put on list in this form:
+ *   [[dish1, [inged1, inged2, ...], 1], [dish2, [inged1, inged2, ..], 2]]
  */
 function runUpdateList(entryList) {
   $('.dishes > ul').empty();
-  // var sel = $('<select>').appendTo('.dishes > ul');
   var sel = $('.dishes > ul');
   _.forEach(entryList, function(item) {
     sel.append($('<li>').attr('value', item[2]).text(item[0]));
@@ -57,8 +57,9 @@ function runValidator(entryItem, regExp) {
 
 /**
  * Get the ingredient list and return an array.
+ *
  * @param  {string} itemString The ingredient list, as a string
- * @return {array}            List, as an array.
+ * @return {array}             Ingredient list, as an array.
  */
 function getIngredients(itemString) {
   if (/,/.test(itemString)) {
@@ -77,22 +78,4 @@ function runIngredientEnterer() {
   var entryItem = $('#main-dish');
   var entryRegExp = /^[a-z\s]+(\s*,\s*[a-z\s]+)*$/i;
   var valid = runValidator(entryItem, entryRegExp);
-  // if (valid) {
-    // var ingredients = getIngredients(entryItem.val());
-    // console.dir(ingredients);
-    // runUpdateList(ingredients);
-  // }
 }
-// 
-// /**
-//  * Event Handler registrator.
-//  */
-// function registerEventHandlers() {
-//   $('#main-dish').on('input', runIngredientEnterer);
-//   // $('form').on('submit', function(event) {
-//   //   event.preventDefault();
-//   //   runFinalFormValidator();
-//   // });
-// }
-//
-// $(document).ready(registerEventHandlers);
