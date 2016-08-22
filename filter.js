@@ -3,7 +3,7 @@
 
 /**
  * Creates and returns an array of the form:
- *   [[dish1, [inged1, inged2, ...]], [dish2, [inged1, inged2, ..]]]
+ *   [[dish1, [inged1, inged2, ...], 1], [dish2, [inged1, inged2, ..]], 2]
  * @param  {json} dishes JSON file containing the dishes and ingredients.
  */
 function createDishArray(dishes) {
