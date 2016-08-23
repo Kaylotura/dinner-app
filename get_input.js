@@ -1,13 +1,12 @@
 'use strict';
 
 /**
- * updates the unordered list of menu ites
- * @param  {[array of objects]} entryList Items to put on list
- *   in the form of [{val: 1, text: 'Apple Pie'}, {val: 2, text: 'Muffin'}]
+ * Updates the unordered list of menu items
+ * @param {Array} Items to put on list
+ *   [[dish1, [inged1, inged2, ...], 1], [dish2, [inged1, inged2, ..]], 2]
  */
 function runUpdateList(entryList) {
   $('.dishes > ul').empty();
-  // var sel = $('<select>').appendTo('.dishes > ul');
   var sel = $('.dishes > ul');
   _.forEach(entryList, function(item) {
     sel.append($('<li>').attr('value', item[2]).text(item[0]));
@@ -41,7 +40,7 @@ function stringValidator(testString, regExp) {
 /**
  * Check whether the input string is a match and changes class to invalid if not
  * @param  {jQuery selector} entryItem The selector on the form for an input
- * @param  {reg exp} regExp            Regular expression to test the match
+ * @param  {reg exp}         regExp    Regular expression to test the match
  *         Return true if there is a match, false otherwise.
  */
 function runValidator(entryItem, regExp) {
@@ -70,29 +69,10 @@ function getIngredients(itemString) {
 
 /**
  * Input validator, for the ingredient entry on the form.
- *
  * Matches only for strings that are correctly typed up to the last character.
  */
 function runIngredientEnterer() {
   var entryItem = $('#main-dish');
   var entryRegExp = /^[a-z\s]+(\s*,\s*[a-z\s]+)*$/i;
   var valid = runValidator(entryItem, entryRegExp);
-  // if (valid) {
-    // var ingredients = getIngredients(entryItem.val());
-    // console.dir(ingredients);
-    // runUpdateList(ingredients);
-  // }
 }
-// 
-// /**
-//  * Event Handler registrator.
-//  */
-// function registerEventHandlers() {
-//   $('#main-dish').on('input', runIngredientEnterer);
-//   // $('form').on('submit', function(event) {
-//   //   event.preventDefault();
-//   //   runFinalFormValidator();
-//   // });
-// }
-//
-// $(document).ready(registerEventHandlers);
