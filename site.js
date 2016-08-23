@@ -52,7 +52,12 @@ function showDishesList() {
   });
 }
 
-
+/**
+ * This function takes in a single item of dishData, called a hit as an argument
+ * and clears the recipie-card fields in the html before re-populating them with
+ * Dish Name, ingredient list, an image of the dish, and alink to the
+ * instructions.
+ */
 function populateRecipieCard(hit) {
   $('.recipie-card > h2').empty();
   $('.recipie-card > ul').empty();
