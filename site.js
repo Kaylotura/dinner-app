@@ -1,9 +1,11 @@
 'use strict';
 
-var ingredient = 'chicken';
-
 /**
- * Populates the Dish list.
+ * Takes in the Dish Data object and ingredients to filter by, and passes them
+ * into a function to create an array of dishes, then filters the array by
+ * the chosen ingredients, and passes that information into the runUpdateList
+ * function while saving the dish data as a global variable to be manipulated
+ * at another point.
  */
 function populateList(dishData, ingredients) {
   var dishArray = createDishArray(dishData);
@@ -13,7 +15,8 @@ function populateList(dishData, ingredients) {
 }
 
 /**
- * Registers the click on Dish List to populate Recipie Card function.
+ * Registers the event of clicking on the Dish List to populate
+ * Recipie Card function.
  */
 function registerDishListHandler() {
   $('.dishes > ul > li').click( function() {
@@ -23,8 +26,9 @@ function registerDishListHandler() {
 }
 
 /**
- * Runs a search request with Edemam using the given string 'chicken', and if
- * successful, it runs the json object through the formatDishes function.
+ * Runs a search request with Edemam using the string submitted in the textbox
+ * by the user, and if successful, it runs the json object through the
+ * formatDishes function. If it fails, it alerts the user.
  */
 var recipieJSON;
 function showDishesList() {
