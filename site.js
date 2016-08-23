@@ -63,7 +63,7 @@ function populateRecipieCard(hit) {
     return $('.recipie-card > ul').append(
       '<li>' + ingredientItem + '</li>');
   });
-  $('.recipie-card > .food-image').append('<img src="' + tastyIcon + '">');
+  $('.recipie-card > .food-image').append('<img src="' + tastyIcon + '"/>');
   $('.recipie-card > nav').append('<a href="' +
   instructionsLink + '">Instructions</a>');
 }
